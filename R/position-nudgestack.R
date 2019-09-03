@@ -29,8 +29,6 @@ position_nudgestack <- function(x = 0, y = 0, vjust = 1, reverse = FALSE) {
   )
 }
 
-
-
 #' @rdname ggplot2-ggproto
 #' @format NULL
 #' @usage NULL
@@ -98,8 +96,6 @@ PositionNudgeStack <- ggproto("PositionNudgeStack", Position,
     }
 
     data <- rbind(neg, pos)[match(seq_len(nrow(data)), c(which(negative), which(!negative))), ]
-
-
 
     # transform only the dimensions for which non-zero nudging is requested
     if (any(params$x != 0)) {
