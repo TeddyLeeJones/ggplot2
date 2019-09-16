@@ -39,7 +39,6 @@ position_nudgestack <- function(x = 0, y = 0, vjust = 1, reverse = FALSE) {
 PositionNudgeStack <- ggproto("PositionNudgeStack", Position,
   x = 0,
   y = 0,
-  type = NULL,
   vjust = 1,
   fill = FALSE,
   reverse = FALSE,
