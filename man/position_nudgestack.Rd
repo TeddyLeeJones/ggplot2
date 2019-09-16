@@ -32,7 +32,6 @@ ESM <- data.frame(
 ESM_prep <- ESM \%>\%
   tidyr::gather(key = key, value = value, -date) \%>\%
   group_by(date, key) \%>\%
-  summarize(value = mean(value)) \%>\%
   filter(date >= "1995-01-01" & date < "1998-01-01")
 
 ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +

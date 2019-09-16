@@ -13,11 +13,6 @@
 #'   This is useful if you're rotating both the plot and legend.
 #' @export
 #' @examples
-<<<<<<< HEAD
-=======
-#' library(dplyr)
-#' library(ggplot2)
->>>>>>> Add time series example
 #' ESM <- data.frame(
 #'   as.matrix(EuStockMarkets),
 #'   date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
@@ -28,12 +23,7 @@
 #' ESM_prep <- ESM %>%
 #'   tidyr::gather(key = key, value = value, -date) %>%
 #'   group_by(date, key) %>%
-#'   summarize(value = mean(value)) %>%
-<<<<<<< HEAD
 #'   filter(date >= "1995-01-01" & date < "1998-01-01")
-=======
-#'   filter(date >= "1995-01-01" & date <= "1997-12-01")
->>>>>>> Add time series example
 #'
 #' ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +
 #'   geom_col(position = position_nudgestack(x = 15))
