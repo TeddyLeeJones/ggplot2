@@ -182,6 +182,7 @@ Collate:
     'position-jitter.r'
     'position-jitterdodge.R'
     'position-nudge.R'
+    'position-nudgestack.R'
     'position-stack.r'
     'quick-plot.r'
     'range.r'
