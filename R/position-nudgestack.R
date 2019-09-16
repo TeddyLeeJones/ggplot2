@@ -13,13 +13,23 @@
 #'   This is useful if you're rotating both the plot and legend.
 #' @export
 #' @examples
-#' data <- mtcars
-#' ggplot() +
-#'   geom_col(
-#'     data,
-#'     aes(x = cyl, y = gear, fill = gear),
-#'     position = position_nudgestack(x = 1)
+#' library(dplyr)
+#' library(ggplot2)
+#' ESM <- data.frame(
+#'   as.matrix(EuStockMarkets),
+#'   date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
+#'                  format = "%d %b %Y"
 #'   )
+#' )
+#'
+#' ESM_prep <- ESM %>%
+#'   tidyr::gather(key = key, value = value, -date) %>%
+#'   group_by(date, key) %>%
+#'   summarize(value = mean(value)) %>%
+#'   filter(date >= "1995-01-01" & date <= "1997-12-01")
+#'
+#' ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +
+#'   geom_col(position = position_nudgestack(x = 15))
 position_nudgestack <- function(x = 0, y = 0, vjust = 1, reverse = FALSE) {
   ggproto(NULL, PositionNudgeStack,
     x = x,
@@ -36,7 +46,6 @@ position_nudgestack <- function(x = 0, y = 0, vjust = 1, reverse = FALSE) {
 PositionNudgeStack <- ggproto("PositionNudgeStack", Position,
   x = 0,
   y = 0,
-  type = NULL,
   vjust = 1,
   fill = FALSE,
   reverse = FALSE,
