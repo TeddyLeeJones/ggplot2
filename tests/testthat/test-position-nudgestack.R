@@ -1,6 +1,7 @@
 context("position_nudgestack")
 
 test_that("position_nudgestack draws correctly", {
+<<<<<<< HEAD
   ESM <- tsbox::ts_tbl(EuStockMarkets)
 
   ESM_prep <- ESM %>%
@@ -110,3 +111,4 @@ test_that("position_nudgestack() can stack correctly when ymax is NA", {
     geom_point(position = position_nudgestack(x = 0.5))
   expect_equal(layer_data(p)$y, c(1, 2))
 })
+
