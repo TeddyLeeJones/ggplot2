@@ -22,8 +22,6 @@ This is primarily used for set stacked columns between the ticks on the
 x-axis.
 }
 \examples{
-library(dplyr)
-library(ggplot2)
 ESM <- data.frame(
   as.matrix(EuStockMarkets),
   date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
