@@ -13,8 +13,6 @@
 #'   This is useful if you're rotating both the plot and legend.
 #' @export
 #' @examples
-#' library(dplyr)
-#' library(ggplot2)
 #' ESM <- data.frame(
 #'   as.matrix(EuStockMarkets),
 #'   date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
