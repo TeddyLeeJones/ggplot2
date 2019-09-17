@@ -22,13 +22,23 @@ This is primarily used for set stacked columns between the ticks on the
 x-axis.
 }
 \examples{
-data <- mtcars
-ggplot() +
-  geom_col(
-    data,
-    aes(x = cyl, y = gear, fill = gear),
-    position = position_nudgestack(x = 1)
+library(dplyr)
+library(ggplot2)
+ESM <- data.frame(
+  as.matrix(EuStockMarkets),
+  date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
+                 format = "\%d \%b \%Y"
   )
+)
+
+ESM_prep <- ESM \%>\%
+  tidyr::gather(key = key, value = value, -date) \%>\%
+  group_by(date, key) \%>\%
+  summarize(value = mean(value)) \%>\%
+  filter(date >= "1995-01-01" & date < "1998-01-01")
+
+ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +
+  geom_col(position = position_nudgestack(x = 15))
 }
 \seealso{
 Other position adjustments: \code{\link{position_dodge}},
