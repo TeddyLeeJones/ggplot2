@@ -1,7 +1,6 @@
 context("position_nudgestack")
 
 test_that("position_nudgestack draws correctly", {
-<<<<<<< HEAD
   ESM <- tsbox::ts_tbl(EuStockMarkets)
 
   ESM_prep <- ESM %>%
