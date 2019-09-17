@@ -26,7 +26,7 @@
 #'   tidyr::gather(key = key, value = value, -date) %>%
 #'   group_by(date, key) %>%
 #'   summarize(value = mean(value)) %>%
-#'   filter(date >= "1995-01-01" & date <= "1997-12-01")
+#'   filter(date >= "1995-01-01" & date < "1998-01-01")
 #'
 #' ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +
 #'   geom_col(position = position_nudgestack(x = 15))
