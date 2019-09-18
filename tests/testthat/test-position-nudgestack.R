@@ -39,6 +39,7 @@ test_that("nudging works in both dimensions simultaneously", {
   expect_equal(data$y, 3:5)
   expect_equal(data$ymin, c(2, 2, 2))
   expect_equal(data$ymax, 3:5)
+
 })
 
 test_that("nudging works for discrete values correctly", {
