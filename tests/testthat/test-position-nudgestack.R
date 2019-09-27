@@ -2,10 +2,10 @@ context("position_nudgestack")
 
 test_that("position_nudgestack draws correctly", {
   ESM <- data_frame(
-    DAX = EuStockMarkets[colnames(EuStockMarkets) == "DAX"],
-    SMI = EuStockMarkets[colnames(EuStockMarkets) == "SMI"],
-    CAC = EuStockMarkets[colnames(EuStockMarkets) == "CAC"],
-    FTSE = EuStockMarkets[colnames(EuStockMarkets) == "FTSE"],
+    DAX = EuStockMarkets[,"DAX"],
+    SMI = EuStockMarkets[,"SMI"],
+    CAC = EuStockMarkets[,"CAC"],
+    FTSE = EuStockMarkets[,"FTSE"],
     date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
       format = "%d %b %Y"
     )
