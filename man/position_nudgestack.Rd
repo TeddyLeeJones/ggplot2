@@ -25,10 +25,10 @@ x-axis.
 ESM <- tsbox::ts_tbl(EuStockMarkets)
 
 ESM_prep <- ESM \%>\%
-  tidyr::gather(key = key, value = value, -date) \%>\%
-  group_by(date, key) \%>\%
+  dplyr::mutate(time = as.Date(paste0(format(time, "\%Y-\%m"),"-1"))) \%>\%
+  group_by(id, time) \%>\%
   summarize(value = mean(value)) \%>\%
-  filter(date >= "1995-01-01" & date < "1998-01-01")
+  filter(time >= "1995-01-01" & time < "1998-01-01")
 
 ggplot(data = ESM_prep, mapping = aes(x = time, y = value, fill = id)) +
   geom_col(position = position_nudgestack(x = 15))
