@@ -22,19 +22,14 @@ This is primarily used for set stacked columns between the ticks on the
 x-axis.
 }
 \examples{
-ESM <- data.frame(
-  as.matrix(EuStockMarkets),
-  date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
-                 format = "\%d \%b \%Y"
-  )
-)
+ESM <- tsbox::ts_tbl(EuStockMarkets)
 
 ESM_prep <- ESM \%>\%
   tidyr::gather(key = key, value = value, -date) \%>\%
   group_by(date, key) \%>\%
   filter(date >= "1995-01-01" & date < "1998-01-01")
 
-ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +
+ggplot(data = ESM_prep, mapping = aes(x = time, y = value, fill = id)) +
   geom_col(position = position_nudgestack(x = 15))
 }
 \seealso{
