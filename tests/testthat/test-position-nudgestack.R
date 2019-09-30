@@ -1,23 +1,16 @@
 context("position_nudgestack")
 
 test_that("position_nudgestack draws correctly", {
-  ESM <- data_frame(
-    DAX = EuStockMarkets[,"DAX"],
-    SMI = EuStockMarkets[,"SMI"],
-    CAC = EuStockMarkets[,"CAC"],
-    FTSE = EuStockMarkets[,"FTSE"],
-    date = as.Date(paste(1, zoo::as.yearmon(time(EuStockMarkets))),
-      format = "%d %b %Y"
-    )
-  )
+
+  ESM <- tsbox::ts_tbl(EuStockMarkets)
 
   ESM_prep <- ESM %>%
-    tidyr::gather(key = key, value = value, -date) %>%
-    group_by(date, key) %>%
-    summarize(value = mean(value)) %>%
-    filter(date >= "1995-01-01" & date < "1998-01-01")
+    dplyr::mutate(time = as.Date(paste0(format(time, "%Y-%m"),"-1"))) %>%
+    dplyr::group_by(id, time) %>%
+    dplyr::summarize(value = mean(value)) %>%
+    dplyr::filter(time >= "1995-01-01" & time < "1998-01-01")
 
-  stock_marked <- ggplot(data = ESM_prep, mapping = aes(x = date, y = value, fill = key)) +
+  stock_marked <- ggplot(data = ESM_prep, mapping = aes(x = time, y = value, fill = id)) +
     geom_col(position = position_nudgestack(x = 15))
 
   expect_doppelganger(
@@ -51,7 +44,7 @@ test_that("nudging works for discrete values correctly", {
   set.seed(111)
 
   # x nudge value for discrete data
-  series <- data.frame(
+  series <- data_frame(
     time = factor(c(rep(1, 4),rep(2, 4), rep(3, 4), rep(4, 4))),
     type = rep(c('a', 'b', 'c', 'd'), 4),
     value = rpois(16, 10)
