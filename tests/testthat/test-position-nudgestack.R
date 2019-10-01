@@ -39,7 +39,6 @@ test_that("nudging works in both dimensions simultaneously", {
   expect_equal(data$y, 3:5)
   expect_equal(data$ymin, c(2, 2, 2))
   expect_equal(data$ymax, 3:5)
-
 })
 
 test_that("nudging works for discrete values correctly", {
@@ -111,4 +110,3 @@ test_that("position_nudgestack() can stack correctly when ymax is NA", {
     geom_point(position = position_nudgestack(x = 0.5))
   expect_equal(layer_data(p)$y, c(1, 2))
 })
-
