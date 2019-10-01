@@ -25,7 +25,7 @@ x-axis.
 ESM <- tsbox::ts_tbl(EuStockMarkets)
 
 ESM_prep <- ESM \%>\%
-  dplyr::mutate(time = as.Date(paste0(format(time, "\%Y-\%m"),"-1"))) \%>\%
+  dplyr::mutate(time = as.Date(paste0(format(time, "\%Y-\%m"), "-1"))) \%>\%
   group_by(id, time) \%>\%
   summarize(value = mean(value)) \%>\%
   filter(time >= "1995-01-01" & time < "1998-01-01")
