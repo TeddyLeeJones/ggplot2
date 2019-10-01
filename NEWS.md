@@ -1,5 +1,7 @@
 # ggplot2 (development version)
 
+* Added `position_nudgestack()`, which allows to nudge stacked columns. (@ThomasKnecht )
+
 * `Geom` now gains a `setup_params()` method in line with the other ggproto
   classes (@thomasp85, #3509)
 
