@@ -55,7 +55,8 @@ Suggests:
     sf (>= 0.7-3),
     svglite (>= 1.2.0.9001),
     testthat (>= 2.1.0),
-    vdiffr (>= 0.3.0)
+    vdiffr (>= 0.3.0),
+    tsbox
 Enhances: sp
 License: GPL-2 | file LICENSE
 URL: http://ggplot2.tidyverse.org, https://github.com/tidyverse/ggplot2
@@ -153,11 +154,14 @@ Collate:
     'grob-dotstack.r'
     'grob-null.r'
     'grouping.r'
+    'guide-bins.R'
     'guide-colorbar.r'
+    'guide-colorsteps.R'
     'guide-legend.r'
     'guides-.r'
     'guides-axis.r'
     'guides-grid.r'
+    'guides-none.r'
     'hexbin.R'
     'labeller.r'
     'labels.r'
@@ -179,12 +183,14 @@ Collate:
     'position-jitter.r'
     'position-jitterdodge.R'
     'position-nudge.R'
+    'position-nudgestack.R'
     'position-stack.r'
     'quick-plot.r'
     'range.r'
     'save.r'
     'scale-.r'
     'scale-alpha.r'
+    'scale-binned.R'
     'scale-brewer.r'
     'scale-colour.r'
     'scale-continuous.r'
@@ -199,6 +205,7 @@ Collate:
     'scale-manual.r'
     'scale-shape.r'
     'scale-size.r'
+    'scale-steps.R'
     'scale-type.R'
     'scale-view.r'
     'scale-viridis.r'
